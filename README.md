@@ -4,7 +4,7 @@ This repository hosts the live web build of my game for testing, feedback, and t
 
 ## 🕹️ Live Playable Link
 You can play the current build directly in your browser here: 
-👉 **{}**
+👉 **https://as-designer.github.io/cozy-tic-tac-toe/**
 
 ## 📋 Context & Issue
 * **Target Platform:** CrazyGames
