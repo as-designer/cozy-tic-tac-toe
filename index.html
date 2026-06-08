@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cozy Cartoon Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Scale wrapper: sized + translated by JS to maintain 9:16 centered in viewport -->
+  <div id="scale-wrapper">
+
+    <div id="game-container">
+
+      <!-- Game Header Block -->
+      <header class="animate-pop">
+        <div class="header-pill">
+          <h1>🌸 COZY TIC TAC TOE ⭐️</h1>
+          <button id="mute-btn" onclick="toggleMute()" class="mute-btn" title="Toggle Sound" aria-label="Toggle Sound">
+            <span id="mute-icon">🔊</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Game Panel -->
+      <main>
+
+        <!-- 1. SETUP OPTIONS CARD -->
+        <div id="setup-card" class="cartoon-card">
+          <h2 class="card-title">🎈 Match Settings</h2>
+
+          <!-- Board Mode Selection -->
+          <div>
+            <label class="label-title">🗺️ Select Playground Size:</label>
+            <div class="grid-2">
+              <button onclick="setMode(3)"  id="mode-btn-3"  class="mode-btn cartoon-border active-selection">
+                <div class="title">3 × 3</div><div class="desc">Get 3 in a row</div>
+              </button>
+              <button onclick="setMode(5)"  id="mode-btn-5"  class="mode-btn cartoon-border">
+                <div class="title">5 × 5</div><div class="desc">Get 3 in a row</div>
+              </button>
+              <button onclick="setMode(7)"  id="mode-btn-7"  class="mode-btn cartoon-border">
+                <div class="title">7 × 7</div><div class="desc">Get 5 in a row</div>
+              </button>
+              <button onclick="setMode(10)" id="mode-btn-10" class="mode-btn cartoon-border">
+                <div class="title">10 × 10</div><div class="desc">Get 5 in a row</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Max Rounds Selection -->
+          <div>
+            <label class="label-title">🏆 Set Match Length:</label>
+            <div class="grid-3">
+              <button onclick="setRounds(1)" id="rounds-btn-1" class="rounds-btn cartoon-border">1 Round</button>
+              <button onclick="setRounds(3)" id="rounds-btn-3" class="rounds-btn cartoon-border active-selection">3 Rounds</button>
+              <button onclick="setRounds(5)" id="rounds-btn-5" class="rounds-btn cartoon-border">5 Rounds</button>
+            </div>
+          </div>
+
+          <button onclick="startGame()" class="play-btn cartoon-border">START GAME</button>
+        </div>
+
+        <!-- 2. GAME BOARD CARD -->
+        <div id="game-card" class="cartoon-card">
+
+          <!-- Scoreboard -->
+          <div class="scoreboard">
+            <div id="p1-panel" class="player-panel">
+              <span class="token">🌸</span>
+              <span class="name">Player 1</span>
+              <span id="p1-score" class="score">0</span>
+            </div>
+            <div class="score-center">
+              <span class="title">STREAK TO WIN</span>
+              <span id="streak-target">3</span>
+              <span class="round-num" id="round-indicator">Round 1 of 3</span>
+            </div>
+            <div id="p2-panel" class="player-panel">
+              <span class="token">⭐️</span>
+              <span class="name">Player 2</span>
+              <span id="p2-score" class="score">0</span>
+            </div>
+          </div>
+
+          <!-- Turn Banner -->
+          <div id="turn-banner" class="cartoon-border">Loading...</div>
+
+          <!-- Board -->
+          <div class="board-container">
+            <div id="board"><!-- Populated by JS --></div>
+          </div>
+
+          <!-- Quit -->
+          <div>
+            <button onclick="backToMenu()" class="quit-btn cartoon-border">
+              🚪 Quit Game &amp; Go Back
+            </button>
+          </div>
+
+        </div>
+
+      </main>
+
+      <!-- 3. POPUP MODAL -->
+      <div id="popup-modal" class="modal-backdrop hidden">
+        <div class="modal-container cartoon-card">
+          <div class="modal-ribbon-left"></div>
+          <div class="modal-ribbon-right"></div>
+
+          <span id="modal-icon" class="bounce-anim">🏆</span>
+          <h3 id="modal-title">We Have a Winner!</h3>
+          <p id="modal-subtitle">Unbelievable Play!</p>
+
+          <div class="modal-box">
+            <div class="modal-box-row">
+              <span>Winner Token:</span>
+              <span id="modal-winner-token" style="font-size:1.15rem;">🌸</span>
+            </div>
+            <div class="modal-box-row modal-box-divider">
+              <span>Playground:</span>
+              <span id="modal-board-size" style="font-weight:900;">3 × 3</span>
+            </div>
+            <div class="modal-box-row modal-box-divider" id="modal-round-score-row">
+              <span>Rounds Score:</span>
+              <span id="modal-rounds" style="font-weight:900;color:#4CAF50;">0 to 0</span>
+            </div>
+          </div>
+
+          <button id="modal-action-btn" onclick="closeModal()" class="modal-action-btn cartoon-border">
+            Let's Go!
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /#game-container -->
+  </div><!-- /#scale-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
